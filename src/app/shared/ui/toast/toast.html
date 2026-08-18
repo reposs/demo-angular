@@ -1,0 +1,13 @@
+@if (visible()) {
+  <div
+    class="toast"
+    [class.toast-leaving]="leaving()"
+    [ngClass]="{
+      'bg-green-500': typeToShow() === 'success',
+      'bg-red-500': typeToShow() === 'error',
+      'bg-yellow-500': typeToShow() === 'info',
+    }"
+  >
+    <span>{{ messageToShow() }}</span>
+  </div>
+}

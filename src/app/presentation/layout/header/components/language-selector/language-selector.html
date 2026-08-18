@@ -1,0 +1,16 @@
+<div class="flex items-center space-x-2 bg-gray-800 rounded-lg p-1">
+  <button
+    (click)="setLanguage('es')"
+    class="px-2 py-1 rounded-md text-xs font-medium transition-colors"
+    [ngClass]="i18n.language() === 'es' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'"
+  >
+    ES
+  </button>
+  <button
+    (click)="setLanguage('en')"
+    class="px-2 py-1 rounded-md text-xs font-medium transition-colors"
+    [ngClass]="i18n.language() === 'en' ? 'bg-blue-600 text-white' : 'text-gray-400 hover:text-white'"
+  >
+    EN
+  </button>
+</div>

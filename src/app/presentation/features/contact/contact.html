@@ -1,0 +1,70 @@
+<section class="text-center py-12">
+  <h1 class="text-3xl font-bold">{{ i18n.translateKey('contact.title') }}</h1>
+  <p class="text-gray-600 mt-2">{{ i18n.translateKey('contact.subtitle') }}</p>
+</section>
+
+<form
+  class="max-w-md mx-auto bg-white p-6 rounded-xl shadow space-y-6"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+  <div>
+    <input
+      type="text"
+      [placeholder]="i18n.translateKey('contact.placeholders.name')"
+      [class.disabled]="form.controls.name.disabled"
+      class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
+      formControlName="name"
+    />
+
+    @if (form.controls.name.touched && form.controls.name.invalid) {
+      <p class="text-red-500 text-sm mt-1">
+        {{ i18n.translateKey('contact.errors.nameRequired') }}
+      </p>
+    }
+  </div>
+
+  <div>
+    <input
+      type="email"
+      [placeholder]="i18n.translateKey('contact.placeholders.email')"
+      class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
+      formControlName="email"
+    />
+
+    @if (form.controls.email.touched && form.controls.email.invalid) {
+      <p class="text-red-500 text-sm mt-1">
+        @if (form.controls.email.errors?.['required']) {
+          {{ i18n.translateKey('contact.errors.emailRequired') }}
+        } @else {
+          {{ i18n.translateKey('contact.errors.emailInvalid') }}
+        }
+      </p>
+    }
+  </div>
+
+  <div>
+    <textarea
+      [placeholder]="i18n.translateKey('contact.placeholders.message')"
+      rows="4"
+      class="w-full border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
+      formControlName="message"
+    ></textarea>
+
+    @if (form.controls.message.touched && form.controls.message.invalid) {
+      <p class="text-red-500 text-sm mt-1">
+        {{ i18n.translateKey('contact.errors.messageRequired') }}
+      </p>
+    }
+  </div>
+
+  <div class="text-center">
+    <app-button type="submit" [disabled]="loading()" class="animate-spin [animation-duration:0.6s]">
+      @if (loading()) {
+        {{ i18n.translateKey('contact.sending') }}
+      } @else {
+        {{ i18n.translateKey('contact.send') }}
+      }
+    </app-button>
+  </div>
+</form>

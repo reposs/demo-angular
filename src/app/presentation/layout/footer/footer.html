@@ -1,0 +1,51 @@
+<footer class="bg-indigo-950 text-white py-10 mt-10">
+  <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+    <!-- Info -->
+    <div>
+      <p class="text-xl font-bold">David Márquez</p>
+      <p class="text-sm text-gray-400 mt-2">{{ i18n.translateKey('footer.role') }}</p>
+      <p class="text-xs text-gray-500 mt-2">{{ i18n.translateKey('footer.demoInfo') }}</p>
+    </div>
+
+    <!-- Navegación -->
+    <div>
+      <p class="font-semibold mb-2">{{ i18n.translateKey('footer.navigationTitle') }}</p>
+      <ul class="space-y-2 text-sm">
+        @for (link of links; track link.path) {
+          <a [routerLink]="link.path" class="hover:text-gray-300 block md:block">
+            {{ i18n.translateKey(link.label) }}
+          </a>
+        }
+      </ul>
+    </div>
+
+    <!-- Tech -->
+    <div>
+      <p class="font-semibold mb-2">{{ i18n.translateKey('footer.techStackTitle') }}</p>
+      <p class="text-sm text-gray-400">
+        Angular 21 · Standalone · Signals · Lazy Loading · Tailwind
+      </p>
+
+      <div class="flex space-x-4 mt-4 text-sm">
+        <a
+          href="https://github.com/reposs/demo-angular"
+          target="_blank"
+          class="hover:text-gray-400"
+        >
+          {{ i18n.translateKey('footer.viewCode') }}
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/roberto-david-m%C3%A1rquez-prieto-5bab6a77/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B3HMSg8XuQ1KrBjnPxJ3qVw%3D%3D"
+          target="_blank"
+          class="hover:text-gray-400"
+        >
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Línea inferior -->
+  <div class="text-center text-xs text-gray-500 mt-8">{{ i18n.translateKey('footer.copyright') }}</div>
+</footer>

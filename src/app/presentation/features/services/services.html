@@ -1,0 +1,198 @@
+<section class="max-w-5xl mx-auto p-6">
+  <h1 class="text-3xl font-bold mb-4">{{ i18n.translateKey('services.title') }}</h1>
+
+  <div class="mb-4 flex items-center gap-4 flex-wrap">
+    <label class="flex items-center gap-2">
+      <input type="checkbox" [(ngModel)]="mock.getAll" /> {{ i18n.translateKey('services.modes.getAll') }}
+    </label>
+    <label class="flex items-center gap-2">
+      <input type="checkbox" [(ngModel)]="mock.getById" /> {{ i18n.translateKey('services.modes.getById') }}
+    </label>
+    <label class="flex items-center gap-2">
+      <input type="checkbox" [(ngModel)]="mock.create" /> {{ i18n.translateKey('services.modes.create') }}
+    </label>
+    <label class="flex items-center gap-2">
+      <input type="checkbox" [(ngModel)]="mock.update" /> {{ i18n.translateKey('services.modes.update') }}
+    </label>
+    <label class="flex items-center gap-2">
+      <input type="checkbox" [(ngModel)]="mock.delete" /> {{ i18n.translateKey('services.modes.delete') }}
+    </label>
+  </div>
+
+  <ng-template #loading>
+    <div class="text-sm text-blue-600">{{ i18n.translateKey('services.loading') }}</div>
+  </ng-template>
+  <ng-template #error let-error>
+    <div class="text-sm text-red-600">{{ i18n.translateKey('services.errorPrefix') }} {{ error }}</div>
+  </ng-template>
+  <ng-template #success let-result>
+    <pre class="mt-3 text-xs bg-gray-100 p-2 rounded overflow-auto">{{ result | json }}</pre>
+  </ng-template>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="p-4 border rounded-lg shadow-sm">
+      <h2 class="font-semibold mb-2">{{ i18n.translateKey('services.cards.getAll.title') }}</h2>
+      <p class="text-sm text-gray-600 mb-3">{{ i18n.translateKey('services.cards.getAll.description') }}</p>
+
+      <app-button (clicked)="runGetAll()" class="mb-3 inline-block" [disabled]="getAll().loading">
+        {{ i18n.translateKey('services.buttons.run') }}
+      </app-button>
+
+      @if (getAll().loading) {
+        <ng-container *ngTemplateOutlet="loading"></ng-container>
+      } @else if (getAll().error) {
+        <ng-container
+          *ngTemplateOutlet="error; context: { $implicit: getAll().error }"
+        ></ng-container>
+      } @else if (getAll().result) {
+        <ng-container
+          *ngTemplateOutlet="success; context: { $implicit: getAll().result }"
+        ></ng-container>
+      } @else {}
+    </div>
+
+    <div class="p-4 border rounded-lg shadow-sm">
+      <h2 class="font-semibold mb-2">{{ i18n.translateKey('services.cards.getById.title') }}</h2>
+      <p class="text-sm text-gray-600 mb-3">{{ i18n.translateKey('services.cards.getById.description') }}</p>
+
+      <div class="flex gap-2 mb-3">
+        <input
+          type="number"
+          [attr.placeholder]="i18n.translateKey('services.placeholders.id')"
+          class="border rounded px-2 py-1 w-24"
+          [ngModel]="getById().id"
+          (ngModelChange)="
+            getById.update((state) => ({
+              ...state,
+              id: $event,
+            }))
+          "
+        />
+      </div>
+
+      <app-button (clicked)="runGetById()" [disabled]="getById().loading">
+        {{ i18n.translateKey('services.buttons.run') }}
+      </app-button>
+
+      @if (getById().loading) {
+        <ng-container *ngTemplateOutlet="loading"></ng-container>
+      } @else if (getById().error) {
+        <ng-container
+          *ngTemplateOutlet="error; context: { $implicit: getById().error }"
+        ></ng-container>
+      } @else if (getById().result) {
+        <ng-container
+          *ngTemplateOutlet="success; context: { $implicit: getById().result }"
+        ></ng-container>
+      } @else {}
+    </div>
+
+    <div class="p-4 border rounded-lg shadow-sm">
+      <h2 class="font-semibold mb-2">{{ i18n.translateKey('services.cards.create.title') }}</h2>
+      <p class="text-sm text-gray-600 mb-3">{{ i18n.translateKey('services.cards.create.description') }}</p>
+
+      <div class="mb-3">
+        <input
+          [attr.placeholder]="i18n.translateKey('services.placeholders.name')"
+          class="border rounded px-2 py-1 w-full"
+          [ngModel]="create().firstname"
+          (ngModelChange)="create.update((state) => ({ ...state, firstname: $event }))"
+        />
+      </div>
+
+      <app-button (clicked)="runCreate()" class="mb-3" [disabled]="create().loading">
+        {{ i18n.translateKey('services.buttons.create') }}
+      </app-button>
+
+      @if (create().loading) {
+        <ng-container *ngTemplateOutlet="loading"></ng-container>
+      } @else if (create().error) {
+        <ng-container
+          *ngTemplateOutlet="error; context: { $implicit: create().error }"
+        ></ng-container>
+      } @else if (create().result) {
+        <ng-container
+          *ngTemplateOutlet="success; context: { $implicit: create().result }"
+        ></ng-container>
+      } @else {}
+    </div>
+
+    <div class="p-4 border rounded-lg shadow-sm">
+      <h2 class="font-semibold mb-2">{{ i18n.translateKey('services.cards.update.title') }}</h2>
+      <p class="text-sm text-gray-600 mb-3">{{ i18n.translateKey('services.cards.update.description') }}</p>
+
+      <div class="mb-3 flex gap-2">
+        <input
+          type="number"
+          [attr.placeholder]="i18n.translateKey('services.placeholders.id')"
+          class="border rounded px-2 py-1 w-24"
+          [ngModel]="update().id"
+          (ngModelChange)="
+            update.update((state) => ({
+              ...state,
+              id: $event,
+            }))
+          "
+        />
+        <input
+          [attr.placeholder]="i18n.translateKey('services.placeholders.name')"
+          class="border rounded px-2 py-1 w-full"
+          [ngModel]="update().firstname"
+          (ngModelChange)="update.update((state) => ({ ...state, firstname: $event }))"
+        />
+      </div>
+
+      <app-button [disabled]="update().loading" (clicked)="runUpdate()" class="mb-3 inline-block">
+        {{ i18n.translateKey('services.buttons.update') }}
+      </app-button>
+
+      @if (update().loading) {
+        <ng-container *ngTemplateOutlet="loading"></ng-container>
+      } @else if (update().error) {
+        <ng-container
+          *ngTemplateOutlet="error; context: { $implicit: update().error }"
+        ></ng-container>
+      } @else if (update().result) {
+        <ng-container
+          *ngTemplateOutlet="success; context: { $implicit: update().result }"
+        ></ng-container>
+      } @else {}
+    </div>
+
+    <div class="p-4 border rounded-lg shadow-sm">
+      <h2 class="font-semibold mb-2">{{ i18n.translateKey('services.cards.delete.title') }}</h2>
+      <p class="text-sm text-gray-600 mb-3">{{ i18n.translateKey('services.cards.delete.description') }}</p>
+
+      <div class="mb-3">
+        <input
+          type="number"
+          [attr.placeholder]="i18n.translateKey('services.placeholders.id')"
+          class="border rounded px-2 py-1 w-24"
+          [ngModel]="delete().id"
+          (ngModelChange)="
+            delete.update((state) => ({
+              ...state,
+              id: $event,
+            }))
+          "
+        />
+      </div>
+
+      <app-button [disabled]="delete().loading" (clicked)="runDelete()" class="mb-3 inline-block">
+        {{ i18n.translateKey('services.buttons.delete') }}
+      </app-button>
+
+      @if (delete().loading) {
+        <ng-container *ngTemplateOutlet="loading"></ng-container>
+      } @else if (delete().error) {
+        <ng-container
+          *ngTemplateOutlet="error; context: { $implicit: delete().error }"
+        ></ng-container>
+      } @else if (delete().result) {
+        <ng-container
+          *ngTemplateOutlet="success; context: { $implicit: delete().result }"
+        ></ng-container>
+      } @else {}
+    </div>
+  </div>
+</section>

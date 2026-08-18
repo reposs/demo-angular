@@ -1,0 +1,43 @@
+<nav class="bg-indigo-950 text-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between h-16 items-center">
+      <!-- Logo -->
+      <div class="text-xl font-bold cursor-pointer" routerLink="/">
+        <img
+          src="/demo-angular/images/logo-demo-angular-192x128.png"
+          alt="Logo-demo-angular"
+          class="w-25 h-16 mr-2"
+          width="192"
+          height="128"
+        />
+      </div>
+
+      <!-- Menú desktop -->
+      <div class="hidden md:flex space-x-6 items-center">
+        <ng-container *ngTemplateOutlet="navLinks"></ng-container>
+        <app-language-selector></app-language-selector>
+      </div>
+
+      <!-- Botón hamburguesa -->
+      <button class="md:hidden focus:outline-none" (click)="toggleMenu()">☰</button>
+    </div>
+  </div>
+
+  <!-- Menú móvil -->
+  <div class="md:hidden px-4 pb-4 space-y-4" [class.hidden]="!menuOpen()">
+    <div class="space-y-2">
+      <ng-container *ngTemplateOutlet="navLinks"></ng-container>
+    </div>
+    <div class="pt-2 border-t border-indigo-900">
+      <app-language-selector></app-language-selector>
+    </div>
+  </div>
+</nav>
+
+<ng-template #navLinks>
+  @for (link of links; track link.path) {
+    <a [routerLink]="link.path" class="hover:text-gray-300 block md:inline">
+      {{ i18n.translateKey(link.label) }}
+    </a>
+  }
+</ng-template>

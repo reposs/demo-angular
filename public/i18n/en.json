@@ -1,0 +1,93 @@
+{
+  "btnBackHome": "Back to home",
+  "btnServices": "Show services",
+  "pageNotFountText": "Page not found",
+  "home": {
+    "title": "Angular 21 Demo",
+    "subtitle": "Sample application to demonstrate modern Angular architecture",
+    "whatIncludes": "What's included",
+    "features": {
+      "architecture": "Feature-based architecture",
+      "lazyLoading": "Lazy loading",
+      "standalone": "Standalone components",
+      "tailwind": "Tailwind CSS"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Sample form with validation in Angular",
+    "success": "Form sent successfully",
+    "error": "Error sending the form",
+    "sending": "Sending...",
+    "send": "Send",
+    "placeholders": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message"
+    },
+    "errors": {
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid format",
+      "messageRequired": "Message is required"
+    }
+  },
+  "services": {
+    "title": "Services - Use-cases playground",
+    "loading": "Loading…",
+    "errorPrefix": "Error:",
+    "modes": {
+      "getAll": "Mock Get All",
+      "getById": "Mock Get By Id",
+      "create": "Mock Create",
+      "update": "Mock Update",
+      "delete": "Mock Delete"
+    },
+    "buttons": {
+      "run": "Run",
+      "create": "Create",
+      "update": "Update",
+      "delete": "Delete"
+    },
+    "placeholders": {
+      "id": "id",
+      "name": "name"
+    },
+    "cards": {
+      "getAll": {
+        "title": "Get all users",
+        "description": "Executes GetUsersUseCase and shows the result."
+      },
+      "getById": {
+        "title": "Get user by id",
+        "description": "Provide an id and run the use case."
+      },
+      "create": {
+        "title": "Create user",
+        "description": "Type a name and create a user (mock or real)."
+      },
+      "update": {
+        "title": "Update user",
+        "description": "Provide an id and update a user (mock or real)."
+      },
+      "delete": {
+        "title": "Delete user",
+        "description": "Provide an id and delete a user (mock or real)."
+      }
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About me",
+    "contact": "Contact"
+  },
+  "footer": {
+    "role": "Full Stack Developer · Angular",
+    "demoInfo": "Technical demo for interviews",
+    "navigationTitle": "Navigation",
+    "techStackTitle": "Tech stack",
+    "viewCode": "View code",
+    "copyright": "© 2026 · Angular demo project"
+  }
+}
