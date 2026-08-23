@@ -20,6 +20,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    loadComponent: () => import('@presentation/pages/not-found/not-found').then((m) => m.NotFound),
+    loadComponent: () => import('@presentation/pages/not-found/not-found').then((c) => c.NotFound),
   },
 ];
