@@ -1,25 +1,21 @@
-import { Component, inject, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgTemplateOutlet } from '@angular/common';
 import { TranslationService } from '@presentation/i18n/translation.service';
 import { LanguageSelector } from '../language-selector/language-selector';
+import { APP_NAV_LINKS } from '@presentation/layout/navigation.config';
 
 @Component({
   selector: 'app-nav',
-  imports: [RouterLink, NgTemplateOutlet, LanguageSelector],
+  imports: [RouterLink, RouterLinkActive, NgTemplateOutlet, LanguageSelector],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './nav.html',
 })
 export class Nav {
   protected readonly i18n = inject(TranslationService);
 
-  menuOpen = signal(false);
-
-  links = [
-    { label: 'nav.home', path: '/' },
-    { label: 'nav.services', path: '/services' },
-    { label: 'nav.about', path: '/about' },
-    { label: 'nav.contact', path: '/contact' },
-  ];
+  readonly menuOpen = signal(false);
+  readonly links = APP_NAV_LINKS;
 
   toggleMenu() {
     this.menuOpen.update((v) => !v);

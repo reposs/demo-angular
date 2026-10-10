@@ -1,62 +1,66 @@
 <section class="bg-white">
   <div class="mx-auto max-w-6xl px-6 py-20 lg:py-28">
-    <span class="text-sm font-semibold uppercase tracking-wider text-indigo-600"> About me </span>
+    <span class="text-sm font-semibold uppercase tracking-wider text-indigo-600">
+      Arquitectura del Proyecto
+    </span>
 
     <h1 class="mt-4 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-      Senior Frontend Developer
-      <span class="text-indigo-600">focused on Angular.</span>
+      Modern Angular 21
+      <span class="text-indigo-600">con Arquitectura Hexagonal.</span>
     </h1>
 
     <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-      Full Stack Developer with extensive experience building web applications, with a strong focus
-      on Angular, TypeScript and modern frontend architecture.
+      Aplicación de referencia empresarial que demuestra cómo desacoplar las reglas de dominio,
+      los casos de uso y la infraestructura externa aplicando el patrón de Puertos y Adaptadores.
     </p>
   </div>
 </section>
 
-<!-- Profile -->
+<!-- Propósito y Misión del Proyecto -->
 <section class="bg-slate-50">
   <div class="mx-auto grid max-w-6xl gap-12 px-6 py-20 lg:grid-cols-2">
     <div>
-      <h2 class="text-2xl font-bold text-slate-900">Who I am</h2>
+      <h2 class="text-2xl font-bold text-slate-900">Propósito y Filosofía de Diseño</h2>
 
       <div class="mt-6 space-y-4 text-slate-600 leading-7">
         <p>
-          I work mainly on frontend development, creating scalable and maintainable applications
-          using Angular and TypeScript.
+          Este proyecto sirve como estándar arquitectónico para aplicaciones frontend escalables y
+          mantenibles en Angular. En lugar de acoplar la interfaz y los componentes directamente a servicios
+          HTTP o librerías externas, el núcleo de negocio permanece completamente aislado.
         </p>
 
         <p>
-          I’m particularly interested in application architecture, reusable components, clean code
-          and keeping business logic independent from infrastructure and frameworks.
+          Aplicando Domain-Driven Design (DDD) táctico y Puertos y Adaptadores, las invariantes de
+          negocio se validan en entidades ricas, y la persistencia se realiza a través de contratos
+          intercambiables (adaptador en memoria Mock vs. API REST en vivo).
         </p>
 
         <p>
-          This project is a technical demonstration of how I approach modern Angular development
-          using hexagonal architecture.
+          El desarrollo sigue las directrices más recientes de Angular: componentes standalone,
+          reactividad granular con Signals, detección de cambios OnPush, y suite completa de pruebas unitarias.
         </p>
       </div>
     </div>
 
     <div class="grid grid-cols-2 gap-4 content-start">
       <div class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-        <p class="text-3xl font-bold text-indigo-600">10+</p>
-        <p class="mt-2 text-sm text-slate-500">Years of experience</p>
+        <p class="text-3xl font-bold text-indigo-600">Angular 21</p>
+        <p class="mt-2 text-sm text-slate-500">Standalone & Signals</p>
       </div>
 
       <div class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-        <p class="text-3xl font-bold text-indigo-600">Angular</p>
-        <p class="mt-2 text-sm text-slate-500">Main frontend technology</p>
+        <p class="text-3xl font-bold text-indigo-600">Hexagonal</p>
+        <p class="mt-2 text-sm text-slate-500">Puertos y Adaptadores</p>
       </div>
 
       <div class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-        <p class="text-3xl font-bold text-indigo-600">TypeScript</p>
-        <p class="mt-2 text-sm text-slate-500">Strongly typed development</p>
+        <p class="text-3xl font-bold text-indigo-600">100%</p>
+        <p class="mt-2 text-sm text-slate-500">OnPush Change Detection</p>
       </div>
 
       <div class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-        <p class="text-3xl font-bold text-indigo-600">Full Stack</p>
-        <p class="mt-2 text-sm text-slate-500">Frontend & backend experience</p>
+        <p class="text-3xl font-bold text-indigo-600">Vitest</p>
+        <p class="mt-2 text-sm text-slate-500">Cobertura de pruebas unitarias</p>
       </div>
     </div>
   </div>
@@ -66,12 +70,12 @@
 <section class="bg-white">
   <div class="mx-auto max-w-6xl px-6 py-20">
     <div class="max-w-2xl">
-      <span class="text-sm font-semibold uppercase tracking-wider text-indigo-600"> Skills </span>
+      <span class="text-sm font-semibold uppercase tracking-wider text-indigo-600"> Principios Técnicos </span>
 
-      <h2 class="mt-3 text-3xl font-bold text-slate-900">Technical expertise</h2>
+      <h2 class="mt-3 text-3xl font-bold text-slate-900">Pilares de Ingeniería</h2>
 
       <p class="mt-4 text-slate-600">
-        Technologies and engineering practices used throughout this project.
+        Patrones arquitectónicos y prácticas de calidad implementadas en el proyecto.
       </p>
     </div>
 
@@ -80,11 +84,11 @@
       <div
         class="rounded-xl border border-slate-200 p-6 transition hover:-translate-y-1 hover:shadow-lg"
       >
-        <h3 class="font-semibold text-slate-900">Angular</h3>
+        <h3 class="font-semibold text-slate-900">Ecosistema Angular Moderno</h3>
 
         <p class="mt-3 text-sm leading-6 text-slate-500">
-          Modern Angular development using standalone APIs, Signals, dependency injection, routing
-          and lazy loading.
+          Uso de standalone APIs, reactividad con Signals, inyección de dependencias flexible, routing con
+          precarga diferida y control flow nativo.
         </p>
 
         <div class="mt-4 flex flex-wrap gap-2">
@@ -102,11 +106,10 @@
       <div
         class="rounded-xl border border-slate-200 p-6 transition hover:-translate-y-1 hover:shadow-lg"
       >
-        <h3 class="font-semibold text-slate-900">Architecture</h3>
+        <h3 class="font-semibold text-slate-900">Arquitectura Limpia & SOLID</h3>
 
         <p class="mt-3 text-sm leading-6 text-slate-500">
-          Hexagonal architecture with clear boundaries between domain, application and
-          infrastructure.
+          Límites claros entre Dominio, Casos de Uso e Infraestructura. Principio de Inversión de Dependencias (DIP) y Anti-Corruption Layer.
         </p>
 
         <div class="mt-4 flex flex-wrap gap-2">
@@ -126,15 +129,15 @@
       <div
         class="rounded-xl border border-slate-200 p-6 transition hover:-translate-y-1 hover:shadow-lg"
       >
-        <h3 class="font-semibold text-slate-900">UI & Styling</h3>
+        <h3 class="font-semibold text-slate-900">Diseño UI & Rendimiento</h3>
 
         <p class="mt-3 text-sm leading-6 text-slate-500">
-          Responsive interfaces built with reusable components and Tailwind CSS.
+          Interfaces responsivas con componentes reutilizables, Tailwind CSS 4 optimizado y detección de cambios OnPush.
         </p>
 
         <div class="mt-4 flex flex-wrap gap-2">
           <span class="rounded-full bg-indigo-50 px-3 py-1 text-xs text-indigo-700">
-            Tailwind
+            Tailwind CSS
           </span>
 
           <span class="rounded-full bg-indigo-50 px-3 py-1 text-xs text-indigo-700">
@@ -142,7 +145,7 @@
           </span>
 
           <span class="rounded-full bg-indigo-50 px-3 py-1 text-xs text-indigo-700">
-            Components
+            OnPush
           </span>
         </div>
       </div>
@@ -155,15 +158,14 @@
   <div class="mx-auto max-w-6xl px-6 py-20">
     <div class="max-w-3xl">
       <span class="text-sm font-semibold uppercase tracking-wider text-indigo-300">
-        Architecture
+        Diseño de Software
       </span>
 
-      <h2 class="mt-3 text-3xl font-bold">Hexagonal Architecture</h2>
+      <h2 class="mt-3 text-3xl font-bold">Arquitectura Hexagonal (Puertos y Adaptadores)</h2>
 
       <p class="mt-4 leading-7 text-indigo-100/70">
-        The application separates business logic from external technologies through ports and
-        adapters. This keeps the core of the application independent from Angular, HTTP and other
-        infrastructure concerns.
+        La aplicación aísla el núcleo de negocio de los detalles técnicos del exterior mediante puertos (interfaces)
+        y adaptadores (implementaciones concretas). Esto mantiene la lógica libre de dependencias de frameworks o librerías HTTP.
       </p>
     </div>
 
@@ -172,53 +174,53 @@
       <div class="w-full max-w-4xl">
         <!-- Presentation -->
         <div class="rounded-xl border border-white/10 bg-white/5 p-6 text-center">
-          <p class="text-xs font-semibold uppercase tracking-wider text-indigo-300">Presentation</p>
+          <p class="text-xs font-semibold uppercase tracking-wider text-indigo-300">Presentación</p>
 
-          <h3 class="mt-2 text-xl font-semibold">Angular Components</h3>
+          <h3 class="mt-2 text-xl font-semibold">Componentes Angular</h3>
 
-          <p class="mt-2 text-sm text-indigo-100/60">Pages · Components · UI</p>
+          <p class="mt-2 text-sm text-indigo-100/60">Páginas · Componentes UI · Consumo de Casos de Uso</p>
         </div>
 
         <div class="flex justify-center py-3 text-2xl text-indigo-300">↓</div>
 
         <!-- Application -->
         <div class="rounded-xl border border-indigo-400/30 bg-indigo-500/10 p-6 text-center">
-          <p class="text-xs font-semibold uppercase tracking-wider text-indigo-300">Application</p>
+          <p class="text-xs font-semibold uppercase tracking-wider text-indigo-300">Aplicación</p>
 
-          <h3 class="mt-2 text-xl font-semibold">Use Cases</h3>
+          <h3 class="mt-2 text-xl font-semibold">Casos de Uso (Use Cases)</h3>
 
-          <p class="mt-2 text-sm text-indigo-100/60">Application-specific business operations</p>
+          <p class="mt-2 text-sm text-indigo-100/60">Orquestación de operaciones de negocio (GetUsers, CreateUser, etc.)</p>
         </div>
 
         <div class="flex justify-center py-3 text-2xl text-indigo-300">↓</div>
 
         <!-- Domain -->
         <div class="rounded-xl border border-indigo-300/40 bg-indigo-400/10 p-8 text-center">
-          <p class="text-xs font-semibold uppercase tracking-wider text-indigo-300">Domain</p>
+          <p class="text-xs font-semibold uppercase tracking-wider text-indigo-300">Dominio (Core)</p>
 
-          <h3 class="mt-2 text-2xl font-bold">Business Logic</h3>
+          <h3 class="mt-2 text-2xl font-bold">Lógica de Negocio Pura</h3>
 
           <p class="mt-3 text-sm text-indigo-100/60">
-            Entities · Value Objects · Domain Rules · Ports
+            Entidades (User) · Invariantes · Excepciones · Puertos (UserRepositoryPort, StoragePort)
           </p>
         </div>
 
         <!-- Adapters -->
         <div class="mt-8 grid gap-4 sm:grid-cols-2">
           <div class="rounded-xl border border-white/10 bg-white/5 p-6 text-center">
-            <p class="text-xs font-semibold uppercase tracking-wider text-indigo-300">Port</p>
+            <p class="text-xs font-semibold uppercase tracking-wider text-indigo-300">Puerto (Contrato)</p>
 
-            <h3 class="mt-2 font-semibold">Repository Interface</h3>
+            <h3 class="mt-2 font-semibold">UserRepositoryPort</h3>
 
-            <p class="mt-2 text-sm text-indigo-100/60">Defines what the application needs.</p>
+            <p class="mt-2 text-sm text-indigo-100/60">Define qué operaciones de persistencia necesita el dominio.</p>
           </div>
 
           <div class="rounded-xl border border-white/10 bg-white/5 p-6 text-center">
-            <p class="text-xs font-semibold uppercase tracking-wider text-indigo-300">Adapter</p>
+            <p class="text-xs font-semibold uppercase tracking-wider text-indigo-300">Adaptador (Infraestructura)</p>
 
-            <h3 class="mt-2 font-semibold">HTTP Repository</h3>
+            <h3 class="mt-2 font-semibold">Mock / HTTP Repository</h3>
 
-            <p class="mt-2 text-sm text-indigo-100/60">Concrete infrastructure implementation.</p>
+            <p class="mt-2 text-sm text-indigo-100/60">Implementación concreta (En memoria o API DummyJSON con ACL).</p>
           </div>
         </div>
       </div>
@@ -227,34 +229,34 @@
     <!-- Architecture principles -->
     <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <div class="rounded-xl border border-white/10 bg-white/5 p-5">
-        <h3 class="font-semibold">Independent</h3>
+        <h3 class="font-semibold">Independiente</h3>
 
         <p class="mt-2 text-sm leading-6 text-indigo-100/60">
-          Domain logic does not depend on Angular or infrastructure.
+          La lógica de dominio no depende de Angular ni de librerías HTTP.
         </p>
       </div>
 
       <div class="rounded-xl border border-white/10 bg-white/5 p-5">
-        <h3 class="font-semibold">Testable</h3>
+        <h3 class="font-semibold">Testeable</h3>
 
         <p class="mt-2 text-sm leading-6 text-indigo-100/60">
-          Business logic can be tested without external dependencies.
+          Cada capa se prueba de forma aislada sin dependencias externas pesadas.
         </p>
       </div>
 
       <div class="rounded-xl border border-white/10 bg-white/5 p-5">
-        <h3 class="font-semibold">Replaceable</h3>
+        <h3 class="font-semibold">Reemplazable</h3>
 
         <p class="mt-2 text-sm leading-6 text-indigo-100/60">
-          Infrastructure adapters can be replaced without changing the domain.
+          Los adaptadores de infraestructura se conmutan sin alterar el dominio.
         </p>
       </div>
 
       <div class="rounded-xl border border-white/10 bg-white/5 p-5">
-        <h3 class="font-semibold">Maintainable</h3>
+        <h3 class="font-semibold">Mantenible</h3>
 
         <p class="mt-2 text-sm leading-6 text-indigo-100/60">
-          Responsibilities are clearly separated between layers.
+          Responsabilidades estrictamente separadas facilitando la evolución del código.
         </p>
       </div>
     </div>
@@ -266,14 +268,13 @@
   <div class="mx-auto max-w-6xl px-6 py-20">
     <div class="max-w-2xl">
       <span class="text-sm font-semibold uppercase tracking-wider text-indigo-600">
-        Application flow
+        Flujo de Datos
       </span>
 
-      <h2 class="mt-3 text-3xl font-bold text-slate-900">From UI to infrastructure</h2>
+      <h2 class="mt-3 text-3xl font-bold text-slate-900">De la Interfaz a la Infraestructura</h2>
 
       <p class="mt-4 text-slate-600">
-        A typical request flows through the application without coupling the presentation layer to
-        infrastructure details.
+        Flujo desacoplado de una solicitud típica a través de las capas hexagonales.
       </p>
     </div>
 
@@ -281,9 +282,9 @@
       <div class="rounded-xl bg-white p-5 text-center shadow-sm ring-1 ring-slate-200">
         <span class="text-xs font-semibold uppercase text-indigo-600"> 01 </span>
 
-        <h3 class="mt-2 font-semibold text-slate-900">Component</h3>
+        <h3 class="mt-2 font-semibold text-slate-900">Componente</h3>
 
-        <p class="mt-2 text-sm text-slate-500">User interaction</p>
+        <p class="mt-2 text-sm text-slate-500">Captura la interacción del usuario</p>
       </div>
 
       <div class="hidden items-center justify-center text-indigo-400 md:flex">→</div>
@@ -291,9 +292,9 @@
       <div class="rounded-xl bg-white p-5 text-center shadow-sm ring-1 ring-slate-200">
         <span class="text-xs font-semibold uppercase text-indigo-600"> 02 </span>
 
-        <h3 class="mt-2 font-semibold text-slate-900">Use Case</h3>
+        <h3 class="mt-2 font-semibold text-slate-900">Caso de Uso</h3>
 
-        <p class="mt-2 text-sm text-slate-500">Application logic</p>
+        <p class="mt-2 text-sm text-slate-500">Ejecuta la orquestación de aplicación</p>
       </div>
 
       <div class="hidden items-center justify-center text-indigo-400 md:flex">→</div>
@@ -301,9 +302,9 @@
       <div class="rounded-xl bg-white p-5 text-center shadow-sm ring-1 ring-slate-200">
         <span class="text-xs font-semibold uppercase text-indigo-600"> 03 </span>
 
-        <h3 class="mt-2 font-semibold text-slate-900">Port</h3>
+        <h3 class="mt-2 font-semibold text-slate-900">Puerto</h3>
 
-        <p class="mt-2 text-sm text-slate-500">Dependency contract</p>
+        <p class="mt-2 text-sm text-slate-500">Contrato abstracto del dominio</p>
       </div>
     </div>
 
@@ -311,20 +312,20 @@
       <div class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
         <span class="text-xs font-semibold uppercase text-indigo-600"> 04 </span>
 
-        <h3 class="mt-2 font-semibold text-slate-900">Adapter</h3>
+        <h3 class="mt-2 font-semibold text-slate-900">Adaptador</h3>
 
         <p class="mt-2 text-sm text-slate-500">
-          Implements the port using HTTP or another infrastructure mechanism.
+          Implementa el puerto (HTTP / Mock) y traduce datos mediante mappers (ACL).
         </p>
       </div>
 
       <div class="rounded-xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
         <span class="text-xs font-semibold uppercase text-indigo-600"> 05 </span>
 
-        <h3 class="mt-2 font-semibold text-slate-900">External API</h3>
+        <h3 class="mt-2 font-semibold text-slate-900">API Externa / Almacén</h3>
 
         <p class="mt-2 text-sm text-slate-500">
-          External system consumed through the infrastructure adapter.
+          Fuente de datos externa conectada a través del adaptador de infraestructura.
         </p>
       </div>
     </div>
@@ -336,14 +337,13 @@
   <div class="mx-auto max-w-6xl px-6 py-20">
     <div class="text-center">
       <span class="text-sm font-semibold uppercase tracking-wider text-indigo-600">
-        Technical demo
+        Demostración Técnica
       </span>
 
-      <h2 class="mt-3 text-3xl font-bold text-slate-900">What this project demonstrates</h2>
+      <h2 class="mt-3 text-3xl font-bold text-slate-900">Aspectos Técnicos Clave</h2>
 
       <p class="mx-auto mt-4 max-w-2xl text-slate-600">
-        A practical demonstration of modern Angular development, architecture and reusable frontend
-        engineering practices.
+        Resumen de las tecnologías y patrones demostrados en este proyecto.
       </p>
     </div>
 
@@ -353,33 +353,33 @@
 
         <h3 class="mt-4 font-semibold text-slate-900">Signals</h3>
 
-        <p class="mt-2 text-sm text-slate-500">Modern reactive state management.</p>
+        <p class="mt-2 text-sm text-slate-500">Gestión de estado reactivo moderno y granular.</p>
       </div>
 
       <div class="rounded-xl bg-slate-50 p-6 text-center ring-1 ring-slate-200">
         <div class="text-2xl">🧩</div>
 
-        <h3 class="mt-4 font-semibold text-slate-900">Components</h3>
+        <h3 class="mt-4 font-semibold text-slate-900">Componentes</h3>
 
-        <p class="mt-2 text-sm text-slate-500">Reusable and focused UI components.</p>
+        <p class="mt-2 text-sm text-slate-500">Componentes reutilizables, tipados y standalone.</p>
       </div>
 
       <div class="rounded-xl bg-slate-50 p-6 text-center ring-1 ring-slate-200">
-        <div class="text-2xl">🏗️</div>
+        <div class="text-2xl">🏛️</div>
 
         <h3 class="mt-4 font-semibold text-slate-900">Hexagonal</h3>
 
         <p class="mt-2 text-sm text-slate-500">
-          Domain-driven boundaries using ports and adapters.
+          Límites de dominio claros con puertos y adaptadores.
         </p>
       </div>
 
       <div class="rounded-xl bg-slate-50 p-6 text-center ring-1 ring-slate-200">
         <div class="text-2xl">🎨</div>
 
-        <h3 class="mt-4 font-semibold text-slate-900">Tailwind</h3>
+        <h3 class="mt-4 font-semibold text-slate-900">Tailwind CSS</h3>
 
-        <p class="mt-2 text-sm text-slate-500">Responsive UI using utility classes.</p>
+        <p class="mt-2 text-sm text-slate-500">Diseño responsivo y adaptativo con utilidades.</p>
       </div>
     </div>
   </div>
@@ -388,25 +388,27 @@
 <!-- CTA -->
 <section class="bg-white">
   <div class="mx-auto max-w-4xl px-6 py-20 text-center">
-    <h2 class="text-3xl font-bold text-slate-900">Want to see how it works?</h2>
+    <h2 class="text-3xl font-bold text-slate-900">Prueba los Casos de Uso en Vivo</h2>
 
     <p class="mx-auto mt-4 max-w-xl text-slate-600">
-      Explore the different sections of the demo or take a look at the source code.
+      Explora el playground de servicios para conmutar entre adaptadores y ejecutar las operaciones del dominio.
     </p>
 
     <div class="mt-8 flex justify-center gap-4">
       <a
         routerLink="/services"
-        class="rounded-lg bg-indigo-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700"
+        class="rounded-lg bg-indigo-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-indigo-700 shadow-sm"
       >
-        Explore the demo
+        Ver Servicios
       </a>
 
       <a
         href="https://github.com/reposs/demo-angular"
+        target="_blank"
+        rel="noopener noreferrer"
         class="rounded-lg border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
       >
-        View code
+        Ver Código en GitHub
       </a>
     </div>
   </div>

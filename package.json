@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build -c production --output-path ./docs --base-href /demo-angular/ && node -e \"const fs=require('fs'); fs.cpSync('./docs/browser', './docs', {recursive: true}); fs.rmSync('./docs/browser', {recursive: true, force: true});\"",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test --watch=false",
+    "test:watch": "ng test"
   },
   "prettier": {
     "printWidth": 100,

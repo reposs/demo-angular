@@ -1,18 +1,21 @@
-import { Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
 import { Button } from '@shared/ui/button/button';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { timer } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslationService } from '@presentation/i18n/translation.service';
 import { ToastService } from '@shared/ui/toast/toast-service';
 
 @Component({
   selector: 'app-contact',
   imports: [Button, ReactiveFormsModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './contact.html',
 })
 export class Contact {
   protected readonly i18n = inject(TranslationService);
   protected readonly toast = inject(ToastService);
+  private readonly destroyRef = inject(DestroyRef);
 
   loading = signal(false);
 
@@ -28,8 +31,6 @@ export class Contact {
     }),
   });
 
-  constructor() {}
-
   onSubmit() {
     this.form.markAllAsTouched();
 
@@ -38,16 +39,17 @@ export class Contact {
     this.loading.set(true);
     this.form.disable();
 
-    // simulating call => timer(3000)
-    timer(3000).subscribe(() => {
-      this.loading.set(false);
+    timer(3000)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => {
+        this.loading.set(false);
 
-      Math.floor(Math.random() * 2)
-        ? this.toast.success(this.i18n.translateKey('contact.success'))
-        : this.toast.error(this.i18n.translateKey('contact.error'));
+        Math.floor(Math.random() * 2)
+          ? this.toast.success(this.i18n.translateKey('contact.success'))
+          : this.toast.error(this.i18n.translateKey('contact.error'));
 
-      this.form.enable();
-      this.form.reset();
-    });
+        this.form.enable();
+        this.form.reset();
+      });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, input, signal } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { timer } from 'rxjs';
 import { ToastService, ToastType } from './toast-service';
@@ -8,6 +8,7 @@ import { ToastService, ToastType } from './toast-service';
   templateUrl: './toast.html',
   styleUrl: './toast.css',
   imports: [NgClass],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Toast {
   private readonly toastService = inject(ToastService);

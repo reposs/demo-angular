@@ -1,16 +1,5 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-
-@Injectable({ providedIn: 'root' })
-export class AdapterModeService {
-  private mode$ = new BehaviorSubject<'mock' | 'http'>('mock');
-  readonly mode = this.mode$.asObservable();
-
-  set(mode: 'mock' | 'http') {
-    this.mode$.next(mode);
-  }
-
-  getValue(): 'mock' | 'http' {
-    return this.mode$.value;
-  }
-}
+/**
+ * @deprecated Move imports to `@infrastructure/adapters/adapter-mode.service`.
+ * In Hexagonal Architecture, adapters belong to the Infrastructure layer.
+ */
+export { AdapterModeService, type RepositoryAdapterMode } from '@infrastructure/adapters/adapter-mode.service';

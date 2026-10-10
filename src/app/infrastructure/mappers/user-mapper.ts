@@ -10,4 +10,13 @@ export class UserMapper {
       email: dto.email,
     });
   }
+
+  static toDto(user: User): UserDto {
+    return {
+      id: user.id,
+      firstName: user.firstname,
+      lastName: user.lastname ?? '',
+      email: user.email ?? '',
+    };
+  }
 }

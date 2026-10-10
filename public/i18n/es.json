@@ -79,12 +79,12 @@
   "nav": {
     "home": "Inicio",
     "services": "Servicios",
-    "about": "Sobre mí",
+    "about": "Arquitectura",
     "contact": "Contacto"
   },
   "footer": {
-    "role": "Full Stack Developer · Angular",
-    "demoInfo": "Demo técnica para entrevistas",
+    "role": "Arquitectura Hexagonal & DDD en Angular 21",
+    "demoInfo": "Demostración de desacoplamiento de software con Puertos y Adaptadores",
     "navigationTitle": "Navegación",
     "techStackTitle": "Stack técnico",
     "viewCode": "Ver código",

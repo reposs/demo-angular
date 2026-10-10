@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import { UserRepositoryPort } from '@domain/ports/user-repository-port';
 import { User } from '@domain/entities/user';
 import { delay, Observable, of, throwError } from 'rxjs';
+import { UserNotFoundException } from '@domain/exceptions/domain-exception';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class UserMockRepository implements UserRepositoryPort {
   private users: User[] = [
     new User({
@@ -18,43 +21,53 @@ export class UserMockRepository implements UserRepositoryPort {
       lastname: 'Williams',
       email: 'michael.williams@example.com',
     }),
-    new User({ id: 3, firstname: 'Sophia', lastname: 'Brown', email: 'sophia.brown@example.com' }),
+    new User({
+      id: 3,
+      firstname: 'Sophia',
+      lastname: 'Brown',
+      email: 'sophia.brown@example.com',
+    }),
   ];
 
   findAll(): Observable<User[]> {
-    return of([...this.users]).pipe(delay(2000));
+    return of([...this.users]).pipe(delay(200));
   }
 
   findById(id: number): Observable<User | null> {
-    return of(this.users.find((user) => user.id === id) ?? null).pipe(delay(3000));
+    const found = this.users.find((user) => user.id === id) ?? null;
+    return of(found).pipe(delay(200));
   }
 
   create(user: User): Observable<User> {
-    this.users.push(user);
-
-    return of(user).pipe(delay(3000));
+    this.users = [...this.users, user];
+    return of(user).pipe(delay(200));
   }
 
   update(user: User): Observable<User> {
     const index = this.users.findIndex((u) => u.id === user.id);
 
     if (index === -1) {
-      return throwError(() => new Error('User not found'));
+      return throwError(() => new UserNotFoundException(user.id));
     }
 
-    const updatedUser = {
-      ...this.users[index],
-      ...(user.firstname !== undefined && { name: user.firstname }),
-      ...(user.lastname !== undefined && { surname: user.lastname }),
-      ...(user.email !== undefined && { email: user.email }),
-    };
+    const current = this.users[index];
+    const updated = current.withUpdatedInfo({
+      firstname: user.firstname,
+      lastname: user.lastname,
+      email: user.email,
+    });
 
-    return of(updatedUser as User).pipe(delay(3000));
+    this.users = [
+      ...this.users.slice(0, index),
+      updated,
+      ...this.users.slice(index + 1),
+    ];
+
+    return of(updated).pipe(delay(200));
   }
 
   delete(id: number): Observable<void> {
     this.users = this.users.filter((user) => user.id !== id);
-
-    return of(void 0).pipe(delay(3000));
+    return of(void 0).pipe(delay(200));
   }
 }

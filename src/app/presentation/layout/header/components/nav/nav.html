@@ -2,15 +2,16 @@
   <div class="max-w-7xl mx-auto px-4">
     <div class="flex justify-between h-16 items-center">
       <!-- Logo -->
-      <div class="text-xl font-bold cursor-pointer" routerLink="/">
+      <a class="text-xl font-bold cursor-pointer" routerLink="/">
         <img
           src="images/logo-demo-angular-192x128.png"
           alt="Logo-demo-angular"
-          class="w-25 h-16 mr-2"
+          class="w-25 h-16 mr-2 object-contain"
           width="192"
           height="128"
+          fetchpriority="high"
         />
-      </div>
+      </a>
 
       <!-- Menú desktop -->
       <div class="hidden md:flex space-x-6 items-center">
@@ -19,7 +20,13 @@
       </div>
 
       <!-- Botón hamburguesa -->
-      <button class="md:hidden focus:outline-none" (click)="toggleMenu()">☰</button>
+      <button
+        class="md:hidden focus:outline-none p-2 rounded hover:bg-indigo-900 transition-colors"
+        aria-label="Toggle navigation menu"
+        (click)="toggleMenu()"
+      >
+        ☰
+      </button>
     </div>
   </div>
 
@@ -36,7 +43,12 @@
 
 <ng-template #navLinks>
   @for (link of links; track link.path) {
-    <a [routerLink]="link.path" class="hover:text-gray-300 block md:inline">
+    <a
+      [routerLink]="link.path"
+      [routerLinkActive]="'text-blue-400 font-semibold'"
+      [routerLinkActiveOptions]="{ exact: link.path === '/' }"
+      class="hover:text-gray-300 transition-colors block md:inline"
+    >
       {{ i18n.translateKey(link.label) }}
     </a>
   }

@@ -1,198 +1,284 @@
-<section class="max-w-5xl mx-auto p-6">
-  <h1 class="text-3xl font-bold mb-4">{{ i18n.translateKey('services.title') }}</h1>
-
-  <div class="mb-4 flex items-center gap-4 flex-wrap">
-    <label class="flex items-center gap-2">
-      <input type="checkbox" [(ngModel)]="mock.getAll" /> {{ i18n.translateKey('services.modes.getAll') }}
-    </label>
-    <label class="flex items-center gap-2">
-      <input type="checkbox" [(ngModel)]="mock.getById" /> {{ i18n.translateKey('services.modes.getById') }}
-    </label>
-    <label class="flex items-center gap-2">
-      <input type="checkbox" [(ngModel)]="mock.create" /> {{ i18n.translateKey('services.modes.create') }}
-    </label>
-    <label class="flex items-center gap-2">
-      <input type="checkbox" [(ngModel)]="mock.update" /> {{ i18n.translateKey('services.modes.update') }}
-    </label>
-    <label class="flex items-center gap-2">
-      <input type="checkbox" [(ngModel)]="mock.delete" /> {{ i18n.translateKey('services.modes.delete') }}
-    </label>
+<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+  <!-- Header & Context -->
+  <div class="mb-8">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100 mb-3">
+      Arquitectura Hexagonal · Puertos y Adaptadores
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+      {{ i18n.translateKey('services.title') }}
+    </h1>
+    <p class="mt-2 text-slate-600 text-sm sm:text-base max-w-3xl">
+      Interactúa directamente con los casos de uso del dominio. Puedes alternar dinámicamente entre el adaptador en memoria (Mock) y el adaptador de red real (HTTP DummyJSON) sin modificar la lógica de negocio.
+    </p>
   </div>
 
-  <ng-template #loading>
-    <div class="text-sm text-blue-600">{{ i18n.translateKey('services.loading') }}</div>
+  <!-- Adapter Switcher Control Bar -->
+  <div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm mb-8">
+    <div class="flex items-center justify-between flex-wrap gap-2 mb-3">
+      <h2 class="text-sm font-bold uppercase tracking-wider text-slate-700 flex items-center gap-2">
+        <svg class="w-4 h-4 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+        </svg>
+        Conmutador de Adaptadores (Mock vs HTTP)
+      </h2>
+      <span class="text-xs text-slate-400">Marca para Mock · Desmarca para HTTP</span>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+      <!-- Toggle getAll -->
+      <label class="flex items-center justify-between p-2.5 rounded-xl border text-xs font-medium cursor-pointer transition-all"
+        [class.bg-indigo-50]="mock.getAll" [class.border-indigo-200]="mock.getAll" [class.text-indigo-900]="mock.getAll"
+        [class.bg-slate-50]="!mock.getAll" [class.border-slate-200]="!mock.getAll" [class.text-slate-600]="!mock.getAll">
+        <span>{{ i18n.translateKey('services.modes.getAll') }}</span>
+        <input type="checkbox" [(ngModel)]="mock.getAll" class="accent-indigo-600 w-4 h-4 rounded cursor-pointer ml-2" />
+      </label>
+
+      <!-- Toggle getById -->
+      <label class="flex items-center justify-between p-2.5 rounded-xl border text-xs font-medium cursor-pointer transition-all"
+        [class.bg-indigo-50]="mock.getById" [class.border-indigo-200]="mock.getById" [class.text-indigo-900]="mock.getById"
+        [class.bg-slate-50]="!mock.getById" [class.border-slate-200]="!mock.getById" [class.text-slate-600]="!mock.getById">
+        <span>{{ i18n.translateKey('services.modes.getById') }}</span>
+        <input type="checkbox" [(ngModel)]="mock.getById" class="accent-indigo-600 w-4 h-4 rounded cursor-pointer ml-2" />
+      </label>
+
+      <!-- Toggle create -->
+      <label class="flex items-center justify-between p-2.5 rounded-xl border text-xs font-medium cursor-pointer transition-all"
+        [class.bg-indigo-50]="mock.create" [class.border-indigo-200]="mock.create" [class.text-indigo-900]="mock.create"
+        [class.bg-slate-50]="!mock.create" [class.border-slate-200]="!mock.create" [class.text-slate-600]="!mock.create">
+        <span>{{ i18n.translateKey('services.modes.create') }}</span>
+        <input type="checkbox" [(ngModel)]="mock.create" class="accent-indigo-600 w-4 h-4 rounded cursor-pointer ml-2" />
+      </label>
+
+      <!-- Toggle update -->
+      <label class="flex items-center justify-between p-2.5 rounded-xl border text-xs font-medium cursor-pointer transition-all"
+        [class.bg-indigo-50]="mock.update" [class.border-indigo-200]="mock.update" [class.text-indigo-900]="mock.update"
+        [class.bg-slate-50]="!mock.update" [class.border-slate-200]="!mock.update" [class.text-slate-600]="!mock.update">
+        <span>{{ i18n.translateKey('services.modes.update') }}</span>
+        <input type="checkbox" [(ngModel)]="mock.update" class="accent-indigo-600 w-4 h-4 rounded cursor-pointer ml-2" />
+      </label>
+
+      <!-- Toggle delete -->
+      <label class="flex items-center justify-between p-2.5 rounded-xl border text-xs font-medium cursor-pointer transition-all"
+        [class.bg-indigo-50]="mock.delete" [class.border-indigo-200]="mock.delete" [class.text-indigo-900]="mock.delete"
+        [class.bg-slate-50]="!mock.delete" [class.border-slate-200]="!mock.delete" [class.text-slate-600]="!mock.delete">
+        <span>{{ i18n.translateKey('services.modes.delete') }}</span>
+        <input type="checkbox" [(ngModel)]="mock.delete" class="accent-indigo-600 w-4 h-4 rounded cursor-pointer ml-2" />
+      </label>
+    </div>
+  </div>
+
+  <!-- Reusable Output State Template (Fixed Height, Always Balanced) -->
+  <ng-template #consoleOutput let-state="state">
+    <div class="mt-4 pt-3 border-t border-slate-100 flex flex-col">
+      <div class="flex items-center justify-between text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1.5 px-1">
+        <span>Consola de Respuesta</span>
+        @if (state.loading) {
+          <span class="text-indigo-600 animate-pulse font-bold">Procesando...</span>
+        } @else if (state.error) {
+          <span class="text-rose-500 font-bold">Error</span>
+        } @else if (state.result !== null && state.result !== '') {
+          <span class="text-emerald-600 font-bold">200 OK</span>
+        } @else {
+          <span class="text-slate-400">En espera</span>
+        }
+      </div>
+
+      <!-- Result Container with strictly defined height -->
+      <div class="h-44 rounded-xl border border-slate-200 bg-slate-900 text-slate-100 overflow-hidden relative flex flex-col shadow-inner">
+        @if (state.loading) {
+          <div class="flex-1 flex flex-col items-center justify-center p-4 text-center">
+            <svg class="animate-spin h-6 w-6 text-indigo-400 mb-2" viewBox="0 0 24 24" fill="none">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+            </svg>
+            <span class="text-xs text-slate-300">{{ i18n.translateKey('services.loading') }}</span>
+          </div>
+        } @else if (state.error) {
+          <div class="flex-1 p-3.5 overflow-y-auto bg-rose-950/40 text-rose-300 text-xs">
+            <div class="font-bold mb-1 flex items-center gap-1.5 text-rose-400">
+              <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+              </svg>
+              {{ i18n.translateKey('services.errorPrefix') }}
+            </div>
+            <pre class="whitespace-pre-wrap font-mono">{{ state.error }}</pre>
+          </div>
+        } @else if (state.result !== null && state.result !== '') {
+          <pre class="flex-1 p-3.5 text-xs text-emerald-400 font-mono overflow-y-auto overscroll-contain selection:bg-emerald-900">{{ state.result | json }}</pre>
+        } @else {
+          <!-- Default Empty / Idle State -->
+          <div class="flex-1 flex flex-col items-center justify-center text-slate-500 p-4 text-center">
+            <svg class="w-7 h-7 mb-1.5 opacity-40 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <span class="text-xs text-slate-400">Listo para ejecutar</span>
+            <span class="text-[11px] text-slate-500 mt-0.5">Pulsa el botón superior para ver el resultado</span>
+          </div>
+        }
+      </div>
+    </div>
   </ng-template>
-  <ng-template #error let-error>
-    <div class="text-sm text-red-600">{{ i18n.translateKey('services.errorPrefix') }} {{ error }}</div>
-  </ng-template>
-  <ng-template #success let-result>
-    <pre class="mt-3 text-xs bg-gray-100 p-2 rounded overflow-auto">{{ result | json }}</pre>
-  </ng-template>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div class="p-4 border rounded-lg shadow-sm">
-      <h2 class="font-semibold mb-2">{{ i18n.translateKey('services.cards.getAll.title') }}</h2>
-      <p class="text-sm text-gray-600 mb-3">{{ i18n.translateKey('services.cards.getAll.description') }}</p>
+  <!-- Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <app-button (clicked)="runGetAll()" class="mb-3 inline-block" [disabled]="getAll().loading">
-        {{ i18n.translateKey('services.buttons.run') }}
-      </app-button>
+    <!-- Card 1: GetAll -->
+    <div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <span class="px-2 py-0.5 rounded text-[11px] font-bold tracking-wider bg-blue-100 text-blue-700 uppercase">GET</span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold"
+            [class.bg-purple-100]="mock.getAll" [class.text-purple-700]="mock.getAll"
+            [class.bg-emerald-100]="!mock.getAll" [class.text-emerald-700]="!mock.getAll">
+            {{ mock.getAll ? 'Mock' : 'HTTP' }}
+          </span>
+        </div>
+        <h2 class="font-bold text-slate-900 text-base mb-1">{{ i18n.translateKey('services.cards.getAll.title') }}</h2>
+        <p class="text-xs text-slate-500 mb-4 min-h-[32px]">{{ i18n.translateKey('services.cards.getAll.description') }}</p>
 
-      @if (getAll().loading) {
-        <ng-container *ngTemplateOutlet="loading"></ng-container>
-      } @else if (getAll().error) {
-        <ng-container
-          *ngTemplateOutlet="error; context: { $implicit: getAll().error }"
-        ></ng-container>
-      } @else if (getAll().result) {
-        <ng-container
-          *ngTemplateOutlet="success; context: { $implicit: getAll().result }"
-        ></ng-container>
-      } @else {}
-    </div>
-
-    <div class="p-4 border rounded-lg shadow-sm">
-      <h2 class="font-semibold mb-2">{{ i18n.translateKey('services.cards.getById.title') }}</h2>
-      <p class="text-sm text-gray-600 mb-3">{{ i18n.translateKey('services.cards.getById.description') }}</p>
-
-      <div class="flex gap-2 mb-3">
-        <input
-          type="number"
-          [attr.placeholder]="i18n.translateKey('services.placeholders.id')"
-          class="border rounded px-2 py-1 w-24"
-          [ngModel]="getById().id"
-          (ngModelChange)="
-            getById.update((state) => ({
-              ...state,
-              id: $event,
-            }))
-          "
-        />
+        <div class="mb-2">
+          <app-button (clicked)="runGetAll()" [disabled]="getAll().loading">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+            </svg>
+            <span>{{ i18n.translateKey('services.buttons.run') }}</span>
+          </app-button>
+        </div>
       </div>
 
-      <app-button (clicked)="runGetById()" [disabled]="getById().loading">
-        {{ i18n.translateKey('services.buttons.run') }}
-      </app-button>
-
-      @if (getById().loading) {
-        <ng-container *ngTemplateOutlet="loading"></ng-container>
-      } @else if (getById().error) {
-        <ng-container
-          *ngTemplateOutlet="error; context: { $implicit: getById().error }"
-        ></ng-container>
-      } @else if (getById().result) {
-        <ng-container
-          *ngTemplateOutlet="success; context: { $implicit: getById().result }"
-        ></ng-container>
-      } @else {}
+      <ng-container *ngTemplateOutlet="consoleOutput; context: { state: getAll() }"></ng-container>
     </div>
 
-    <div class="p-4 border rounded-lg shadow-sm">
-      <h2 class="font-semibold mb-2">{{ i18n.translateKey('services.cards.create.title') }}</h2>
-      <p class="text-sm text-gray-600 mb-3">{{ i18n.translateKey('services.cards.create.description') }}</p>
+    <!-- Card 2: GetById -->
+    <div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <span class="px-2 py-0.5 rounded text-[11px] font-bold tracking-wider bg-blue-100 text-blue-700 uppercase">GET /:id</span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold"
+            [class.bg-purple-100]="mock.getById" [class.text-purple-700]="mock.getById"
+            [class.bg-emerald-100]="!mock.getById" [class.text-emerald-700]="!mock.getById">
+            {{ mock.getById ? 'Mock' : 'HTTP' }}
+          </span>
+        </div>
+        <h2 class="font-bold text-slate-900 text-base mb-1">{{ i18n.translateKey('services.cards.getById.title') }}</h2>
+        <p class="text-xs text-slate-500 mb-4 min-h-[32px]">{{ i18n.translateKey('services.cards.getById.description') }}</p>
 
-      <div class="mb-3">
-        <input
-          [attr.placeholder]="i18n.translateKey('services.placeholders.name')"
-          class="border rounded px-2 py-1 w-full"
-          [ngModel]="create().firstname"
-          (ngModelChange)="create.update((state) => ({ ...state, firstname: $event }))"
-        />
+        <div class="flex gap-2 mb-2">
+          <input
+            type="number"
+            [attr.placeholder]="i18n.translateKey('services.placeholders.id')"
+            class="w-24 px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white"
+            [ngModel]="getById().id"
+            (ngModelChange)="getById.update((state) => ({ ...state, id: $event }))"
+          />
+          <app-button (clicked)="runGetById()" [disabled]="getById().loading">
+            <span>{{ i18n.translateKey('services.buttons.run') }}</span>
+          </app-button>
+        </div>
       </div>
 
-      <app-button (clicked)="runCreate()" class="mb-3" [disabled]="create().loading">
-        {{ i18n.translateKey('services.buttons.create') }}
-      </app-button>
-
-      @if (create().loading) {
-        <ng-container *ngTemplateOutlet="loading"></ng-container>
-      } @else if (create().error) {
-        <ng-container
-          *ngTemplateOutlet="error; context: { $implicit: create().error }"
-        ></ng-container>
-      } @else if (create().result) {
-        <ng-container
-          *ngTemplateOutlet="success; context: { $implicit: create().result }"
-        ></ng-container>
-      } @else {}
+      <ng-container *ngTemplateOutlet="consoleOutput; context: { state: getById() }"></ng-container>
     </div>
 
-    <div class="p-4 border rounded-lg shadow-sm">
-      <h2 class="font-semibold mb-2">{{ i18n.translateKey('services.cards.update.title') }}</h2>
-      <p class="text-sm text-gray-600 mb-3">{{ i18n.translateKey('services.cards.update.description') }}</p>
+    <!-- Card 3: Create -->
+    <div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <span class="px-2 py-0.5 rounded text-[11px] font-bold tracking-wider bg-emerald-100 text-emerald-800 uppercase">POST</span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold"
+            [class.bg-purple-100]="mock.create" [class.text-purple-700]="mock.create"
+            [class.bg-emerald-100]="!mock.create" [class.text-emerald-700]="!mock.create">
+            {{ mock.create ? 'Mock' : 'HTTP' }}
+          </span>
+        </div>
+        <h2 class="font-bold text-slate-900 text-base mb-1">{{ i18n.translateKey('services.cards.create.title') }}</h2>
+        <p class="text-xs text-slate-500 mb-4 min-h-[32px]">{{ i18n.translateKey('services.cards.create.description') }}</p>
 
-      <div class="mb-3 flex gap-2">
-        <input
-          type="number"
-          [attr.placeholder]="i18n.translateKey('services.placeholders.id')"
-          class="border rounded px-2 py-1 w-24"
-          [ngModel]="update().id"
-          (ngModelChange)="
-            update.update((state) => ({
-              ...state,
-              id: $event,
-            }))
-          "
-        />
-        <input
-          [attr.placeholder]="i18n.translateKey('services.placeholders.name')"
-          class="border rounded px-2 py-1 w-full"
-          [ngModel]="update().firstname"
-          (ngModelChange)="update.update((state) => ({ ...state, firstname: $event }))"
-        />
+        <div class="flex gap-2 mb-2">
+          <input
+            type="text"
+            [attr.placeholder]="i18n.translateKey('services.placeholders.name')"
+            class="flex-1 px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white"
+            [ngModel]="create().firstname"
+            (ngModelChange)="create.update((state) => ({ ...state, firstname: $event }))"
+          />
+          <app-button (clicked)="runCreate()" [disabled]="create().loading">
+            <span>{{ i18n.translateKey('services.buttons.create') }}</span>
+          </app-button>
+        </div>
       </div>
 
-      <app-button [disabled]="update().loading" (clicked)="runUpdate()" class="mb-3 inline-block">
-        {{ i18n.translateKey('services.buttons.update') }}
-      </app-button>
-
-      @if (update().loading) {
-        <ng-container *ngTemplateOutlet="loading"></ng-container>
-      } @else if (update().error) {
-        <ng-container
-          *ngTemplateOutlet="error; context: { $implicit: update().error }"
-        ></ng-container>
-      } @else if (update().result) {
-        <ng-container
-          *ngTemplateOutlet="success; context: { $implicit: update().result }"
-        ></ng-container>
-      } @else {}
+      <ng-container *ngTemplateOutlet="consoleOutput; context: { state: create() }"></ng-container>
     </div>
 
-    <div class="p-4 border rounded-lg shadow-sm">
-      <h2 class="font-semibold mb-2">{{ i18n.translateKey('services.cards.delete.title') }}</h2>
-      <p class="text-sm text-gray-600 mb-3">{{ i18n.translateKey('services.cards.delete.description') }}</p>
+    <!-- Card 4: Update -->
+    <div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <span class="px-2 py-0.5 rounded text-[11px] font-bold tracking-wider bg-amber-100 text-amber-800 uppercase">PUT /:id</span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold"
+            [class.bg-purple-100]="mock.update" [class.text-purple-700]="mock.update"
+            [class.bg-emerald-100]="!mock.update" [class.text-emerald-700]="!mock.update">
+            {{ mock.update ? 'Mock' : 'HTTP' }}
+          </span>
+        </div>
+        <h2 class="font-bold text-slate-900 text-base mb-1">{{ i18n.translateKey('services.cards.update.title') }}</h2>
+        <p class="text-xs text-slate-500 mb-4 min-h-[32px]">{{ i18n.translateKey('services.cards.update.description') }}</p>
 
-      <div class="mb-3">
-        <input
-          type="number"
-          [attr.placeholder]="i18n.translateKey('services.placeholders.id')"
-          class="border rounded px-2 py-1 w-24"
-          [ngModel]="delete().id"
-          (ngModelChange)="
-            delete.update((state) => ({
-              ...state,
-              id: $event,
-            }))
-          "
-        />
+        <div class="flex flex-wrap gap-2 mb-2">
+          <input
+            type="number"
+            [attr.placeholder]="i18n.translateKey('services.placeholders.id')"
+            class="w-20 px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white"
+            [ngModel]="update().id"
+            (ngModelChange)="update.update((state) => ({ ...state, id: $event }))"
+          />
+          <input
+            type="text"
+            [attr.placeholder]="i18n.translateKey('services.placeholders.name')"
+            class="flex-1 min-w-[120px] px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white"
+            [ngModel]="update().firstname"
+            (ngModelChange)="update.update((state) => ({ ...state, firstname: $event }))"
+          />
+          <app-button (clicked)="runUpdate()" [disabled]="update().loading">
+            <span>{{ i18n.translateKey('services.buttons.update') }}</span>
+          </app-button>
+        </div>
       </div>
 
-      <app-button [disabled]="delete().loading" (clicked)="runDelete()" class="mb-3 inline-block">
-        {{ i18n.translateKey('services.buttons.delete') }}
-      </app-button>
-
-      @if (delete().loading) {
-        <ng-container *ngTemplateOutlet="loading"></ng-container>
-      } @else if (delete().error) {
-        <ng-container
-          *ngTemplateOutlet="error; context: { $implicit: delete().error }"
-        ></ng-container>
-      } @else if (delete().result) {
-        <ng-container
-          *ngTemplateOutlet="success; context: { $implicit: delete().result }"
-        ></ng-container>
-      } @else {}
+      <ng-container *ngTemplateOutlet="consoleOutput; context: { state: update() }"></ng-container>
     </div>
+
+    <!-- Card 5: Delete -->
+    <div class="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between gap-2 mb-2">
+          <span class="px-2 py-0.5 rounded text-[11px] font-bold tracking-wider bg-rose-100 text-rose-800 uppercase">DELETE /:id</span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold"
+            [class.bg-purple-100]="mock.delete" [class.text-purple-700]="mock.delete"
+            [class.bg-emerald-100]="!mock.delete" [class.text-emerald-700]="!mock.delete">
+            {{ mock.delete ? 'Mock' : 'HTTP' }}
+          </span>
+        </div>
+        <h2 class="font-bold text-slate-900 text-base mb-1">{{ i18n.translateKey('services.cards.delete.title') }}</h2>
+        <p class="text-xs text-slate-500 mb-4 min-h-[32px]">{{ i18n.translateKey('services.cards.delete.description') }}</p>
+
+        <div class="flex gap-2 mb-2">
+          <input
+            type="number"
+            [attr.placeholder]="i18n.translateKey('services.placeholders.id')"
+            class="w-24 px-3 py-2 text-sm bg-slate-50 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white"
+            [ngModel]="delete().id"
+            (ngModelChange)="delete.update((state) => ({ ...state, id: $event }))"
+          />
+          <app-button (clicked)="runDelete()" [disabled]="delete().loading" variant="danger">
+            <span>{{ i18n.translateKey('services.buttons.delete') }}</span>
+          </app-button>
+        </div>
+      </div>
+
+      <ng-container *ngTemplateOutlet="consoleOutput; context: { state: delete() }"></ng-container>
+    </div>
+
   </div>
 </section>

@@ -14,7 +14,11 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError((httpErrorResponse: HttpErrorResponse) => {
       if (isPlatformBrowser(platformId) && !req.context.get(IGNORE_ERROR)) {
-        toastService.error(httpErrorResponse.error?.message);
+        const errorMsg =
+          httpErrorResponse.error?.message ??
+          httpErrorResponse.message ??
+          'An unexpected HTTP error occurred';
+        toastService.error(errorMsg);
       }
 
       return throwError(() => httpErrorResponse);

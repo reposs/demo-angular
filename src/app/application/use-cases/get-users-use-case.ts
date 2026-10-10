@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Inject, Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { User } from '@domain/entities/user';
@@ -9,7 +9,11 @@ import { USER_REPOSITORY } from '@application/tokens/user-repository-token';
   providedIn: 'root',
 })
 export class GetUsersUseCase {
-  private readonly userRepository = inject<UserRepositoryPort>(USER_REPOSITORY);
+  private readonly userRepository: UserRepositoryPort;
+
+  constructor(@Inject(USER_REPOSITORY) userRepository?: UserRepositoryPort) {
+    this.userRepository = userRepository ?? inject(USER_REPOSITORY);
+  }
 
   execute(): Observable<User[]> {
     return this.userRepository.findAll();

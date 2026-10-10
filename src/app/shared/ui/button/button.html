@@ -5,7 +5,13 @@
 @if (link()) {
   <a
     [routerLink]="link()"
-    class="inline-flex items-center gap-2 mt-6 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 cursor-pointer"
+    class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:scale-[0.99]"
+    [ngClass]="{
+      'bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm hover:shadow': variant() === 'primary',
+      'bg-slate-100 text-slate-700 hover:bg-slate-200': variant() === 'secondary',
+      'border border-slate-300 text-slate-700 hover:bg-slate-50': variant() === 'outline',
+      'bg-rose-600 text-white hover:bg-rose-700 shadow-sm': variant() === 'danger'
+    }"
   >
     <ng-container *ngTemplateOutlet="content"></ng-container>
   </a>
@@ -14,7 +20,13 @@
     [type]="type()"
     [disabled]="disabled()"
     (click)="clicked.emit()"
-    class="inline-flex items-center gap-2 mt-6 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+    class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 enabled:cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 enabled:active:scale-[0.99]"
+    [ngClass]="{
+      'bg-indigo-600 text-white enabled:hover:bg-indigo-700 shadow-sm enabled:hover:shadow': variant() === 'primary',
+      'bg-slate-100 text-slate-700 enabled:hover:bg-slate-200': variant() === 'secondary',
+      'border border-slate-300 text-slate-700 enabled:hover:bg-slate-50': variant() === 'outline',
+      'bg-rose-600 text-white enabled:hover:bg-rose-700 shadow-sm': variant() === 'danger'
+    }"
   >
     <ng-container *ngTemplateOutlet="content"></ng-container>
   </button>

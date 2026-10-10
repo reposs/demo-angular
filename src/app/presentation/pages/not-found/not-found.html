@@ -1,8 +1,16 @@
-<div class="h-full flex flex-col items-center justify-center text-center">
-  <h1 class="text-6xl font-bold text-gray-800">404</h1>
-  <p class="text-xl mt-4 text-gray-600">{{ i18n.translateKey('pageNotFountText') }}</p>
+<div class="max-w-md mx-auto my-auto px-4 py-16 text-center">
+  <div class="w-16 h-16 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-2xl mx-auto mb-4 font-black border border-indigo-100">
+    404
+  </div>
+  <h1 class="text-2xl font-bold text-slate-900">{{ i18n.translateKey('pageNotFountText') }}</h1>
+  <p class="text-sm text-slate-500 mt-2 mb-6">
+    La ruta seleccionada no está disponible o ha cambiado de ubicación.
+  </p>
 
-  <app-button class="mt-8" link="/">
-    {{ i18n.translateKey('btnBackHome') }}
+  <app-button link="/">
+    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+    </svg>
+    <span>{{ i18n.translateKey('btnBackHome') }}</span>
   </app-button>
 </div>

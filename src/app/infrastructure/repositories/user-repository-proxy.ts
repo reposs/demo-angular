@@ -2,11 +2,13 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '@domain/entities/user';
 import { UserRepositoryPort } from '@domain/ports/user-repository-port';
-import { AdapterModeService } from '@application/adapters/adapter-mode.service';
+import { AdapterModeService } from '@infrastructure/adapters/adapter-mode.service';
 import { UserMockRepository } from './user-mock-repository';
 import { UserHttpRepository } from './user-http-repository';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class UserRepositoryProxy implements UserRepositoryPort {
   private readonly mode = inject(AdapterModeService);
   private readonly mockRepo = inject(UserMockRepository);
