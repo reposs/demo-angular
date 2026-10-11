@@ -1,5 +1,9 @@
 # Demo Angular - Hexagonal Architecture (Ports & Adapters)
 
+> **⚠️ AVISO DE DERECHOS DE AUTOR Y USO RESTRINGIDO**  
+> Este repositorio es un proyecto de demostración técnica creado **única y exclusivamente para exhibición en portafolio profesional**.  
+> **NO cuenta con licencia MIT ni ninguna otra licencia de código abierto (Open Source).** Todos los derechos están reservados. Queda expresamente **prohibida su clonación, descarga, copia total o parcial, redistribución, modificación o uso** en proyectos personales o comerciales sin autorización previa y por escrito.
+
 Demo live: [https://reposs.github.io/demo-angular/](https://reposs.github.io/demo-angular/)
 
 Demostración de una aplicación en **Angular 21** aplicando **Arquitectura Hexagonal (Puertos y Adaptadores)**, principios **SOLID**, **Clean Code** y **Domain-Driven Design (DDD)** táctico.
@@ -75,3 +79,16 @@ Genera la compilación optimizada en `./docs/` lista para GitHub Pages.
 - **Stateless HTTP Service:** Eliminación de race conditions en `HttpApiService`.
 - **SSR & Platform Safety:** `LocalStorageAdapter` seguro ante entornos sin `window` / `localStorage`.
 - **100% Cobertura de Tests Funcionales:** Pruebas unitarias en Dominio, Casos de Uso, Mappers, Repositorios, Interceptores y Componentes.
+
+---
+
+## ⚖️ Licencia y Términos de Uso
+
+**Todos los derechos reservados © 2026.**
+
+Este repositorio y su contenido son de carácter privado/propietario y se publican con fines **estrictamente demostrativos para revisión técnica en portafolio profesional**:
+
+- 🚫 **Sin Licencia de Código Abierto (No MIT):** Este proyecto **no** está licenciado bajo MIT, Apache, GPL, BSD ni ningún otro esquema de código abierto.
+- 🚫 **Prohibición de Clonación y Descarga:** No se concede autorización para clonar, bifurcar (*fork*) para fines ajenos a la evaluación visual, descargar, reproducir o duplicar este repositorio ni ninguna de sus partes.
+- 🚫 **Uso Comercial y Personal Prohibido:** Queda prohibida la utilización total o parcial de este código, arquitectura o activos para proyectos comerciales, personales, plantillas, productos derivados o material formativo sin consentimiento explícito y por escrito del autor.
+- 👁️ **Acceso Exclusivo de Demostración:** El acceso a este código está concebido únicamente para visualización y evaluación de competencias técnicas en el marco de selección o exhibición de portafolio.
